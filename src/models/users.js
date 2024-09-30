@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const Users = sequelize.define('Users', {
+const User = sequelize.define('Users', {
     lastname_user: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -36,4 +36,13 @@ const Users = sequelize.define('Users', {
     }
 });
 
-module.exports = Users;
+User.beforeCreate(async (user) => {
+    const salt = await bcrypt.genSalt(10);
+    user.pass_user = await bcrypt.hash(user.pass_user, salt);
+});
+
+User.prototype.comparePassword = function (pass_user) {
+    return bcrypt.compare(pass_user, this.pass_user);
+};
+
+module.exports = User;

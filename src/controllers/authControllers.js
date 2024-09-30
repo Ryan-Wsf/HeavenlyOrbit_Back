@@ -8,7 +8,7 @@ exports.register = async (req, res, next) => {
         const user = await User.create({ email, password });
         res.status(201).json({ message: 'User Created', userId: user.id });
     } catch (error) {
-        next(error);  // Passer l'erreur au middleware d'Express
+        next(error);  
     }
 }
 

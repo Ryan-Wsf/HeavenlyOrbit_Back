@@ -7,7 +7,7 @@ const UserQuizzResults = sequelize.define('user_quizz_results', {
         allowNull: false,
         references: {
             model: 'users',
-            key: 'id_user'
+            key: 'id'
         }
     },
 
@@ -16,7 +16,7 @@ const UserQuizzResults = sequelize.define('user_quizz_results', {
         allowNull: false,
         references: {
             model: 'quizzes',
-            key: 'id_quiz'
+            key: 'id'
         }
     },
 

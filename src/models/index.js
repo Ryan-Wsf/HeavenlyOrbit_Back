@@ -1,30 +1,30 @@
-const Answers = require('./answers');
-const Articles = require('./articles');
+const User = require('./users');
 const Categories = require('./categories');
+const Articles = require('./articles');
 const DifficultyQuiz = require('./difficultyQuiz');
-const Questions = require('./questions');
 const Quizzes = require('./quizzes');
-const UserQuizzResults = require('./userQuizzResults');
-const Users = require('./users');
+// const Answers = require('./answers');
+// const Questions = require('./questions');
+// const UserQuizzResults = require('./userQuizzResults');
 
-Questions.belongsTo(Quizzes);
-Answers.belongsTo(Questions);
-Articles.belongsTo(Categories);
-Categories.hasMany(Articles);
-DifficultyQuiz.belongsTo(Questions);
-UserQuizzResults.belongsTo(Users);
-UserQuizzResults.belongsTo(Quizzes);
-Quizzes.hasMany(Questions);
-Questions.hasMany(Answers);
+// Questions.belongsTo(Quizzes);
+// Answers.belongsTo(Questions);
+// Articles.belongsTo(Categories);
+// Categories.hasMany(Articles);
+// DifficultyQuiz.belongsTo(Questions);
+// UserQuizzResults.belongsTo(User);
+// UserQuizzResults.belongsTo(Quizzes);
+// Quizzes.hasMany(Questions);
+// Questions.hasMany(Answers);
 
 
 module.exports = {
-    Answers,
-    Articles,
+    User,
     Categories,
+    Articles,
     DifficultyQuiz,
-    Questions,
     Quizzes,
-    UserQuizzResults,
-    Users
+    // Answers,
+    // Questions,
+    // UserQuizzResults,
 }

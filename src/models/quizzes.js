@@ -9,13 +9,13 @@ const Quizzes = sequelize.define('Quizzes', {
             notEmpty: true
         }
     },
-    
-    fk_difficulty_quizz: {
+
+    fk_difficulty_quiz: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
-            model: 'difificulty_quizz',
-            key: 'id_difficulty_quizz'
+            model: 'difficulty_quizzes',
+            key: 'id'
         }
     }
 });

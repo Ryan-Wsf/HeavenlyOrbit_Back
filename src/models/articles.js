@@ -36,10 +36,7 @@ const Articles = sequelize.define('Articles', {
 
     id_parent: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            notEmpty: true
-        }
+        allowNull: true,
     },
 
     fk_id_category: {
@@ -47,7 +44,7 @@ const Articles = sequelize.define('Articles', {
         allowNull: false,
         references: {
             model: 'categories',
-            key: 'id_category'
+            key: 'id'
         }
     }
 });
