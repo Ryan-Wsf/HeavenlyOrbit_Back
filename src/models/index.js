@@ -3,9 +3,8 @@ const Categories = require('./categories');
 const Articles = require('./articles');
 const DifficultyQuiz = require('./difficultyQuiz');
 const Quizzes = require('./quizzes');
-// const Answers = require('./answers');
-// const Questions = require('./questions');
-// const UserQuizzResults = require('./userQuizzResults');
+const Questions = require('./questions');
+const Answers = require('./answers');
 
 // Questions.belongsTo(Quizzes);
 // Answers.belongsTo(Questions);
@@ -24,7 +23,6 @@ module.exports = {
     Articles,
     DifficultyQuiz,
     Quizzes,
-    // Answers,
-    // Questions,
-    // UserQuizzResults,
+    Answers,
+    Questions
 }

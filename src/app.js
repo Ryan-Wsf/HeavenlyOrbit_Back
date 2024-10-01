@@ -5,8 +5,8 @@ const categoriesRoutes = require('./routes/categoriesRoutes');
 const articlesRoutes = require('./routes/articlesRoutes');
 const difficultyQuizRoutes = require('./routes/difficultyQuizRoutes');
 const quizzesRoutes = require('./routes/quizzesRoutes');
-// const answersRoutes = require('./routes/answersRoutes');
-// const questionsRoutes = require('./routes/questionsRoutes');
+const questionsRoutes = require('./routes/questionsRoutes');
+const answersRoutes = require('./routes/answersRoutes');
 const errorHandler = require('./middlewares/errorHandler');
 const sequelize = require('./config/database');
 
@@ -20,8 +20,8 @@ app.use('/categories', categoriesRoutes);
 app.use('/articles', articlesRoutes);
 app.use('/difficultyQuiz', difficultyQuizRoutes);
 app.use('/quizzes', quizzesRoutes);
-// app.use('/answers', answersRoutes);
-// app.use('/questions', questionsRoutes);
+app.use('/questions', questionsRoutes);
+app.use('/answers', answersRoutes);
 
 app.use(errorHandler);
 

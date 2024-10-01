@@ -15,7 +15,7 @@ const Questions = sequelize.define('Questions', {
         allowNull: false,
         references: {
             model: 'quizzes',
-            key: 'id_quiz'
+            key: 'id'
         }
     }
 });
