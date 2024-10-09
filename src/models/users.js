@@ -1,10 +1,11 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const bcrypt = require('bcryptjs');
 
 const User = sequelize.define('Users', {
     lastname_user: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
             notEmpty: true
         }
@@ -12,7 +13,7 @@ const User = sequelize.define('Users', {
 
     name_user: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
             notEmpty: true
         }
@@ -20,7 +21,7 @@ const User = sequelize.define('Users', {
 
     email_user: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
             notEmpty: true
         },
@@ -33,6 +34,12 @@ const User = sequelize.define('Users', {
         validate: {
             notEmpty: true
         }
+    },
+
+    isAdmin: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true,
+        defaultValue: false
     }
 });
 
