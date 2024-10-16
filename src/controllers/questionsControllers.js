@@ -1,4 +1,4 @@
-const Questions = require('../models');
+const { Questions, Answers } = require('../models');
 
 exports.createQuestion = async (req, res, next) => {
     try {
@@ -13,7 +13,9 @@ exports.createQuestion = async (req, res, next) => {
 exports.getQuestion = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const question = await Questions.findByPk(id);
+        const question = await Questions.findByPk(id, {
+            include: [{ model: Answers }]  // Inclure les réponses associées
+        });
         if (!question) {
             return res.status(404).json({ message: 'Question not found' });
         }
@@ -25,18 +27,13 @@ exports.getQuestion = async (req, res, next) => {
 
 exports.getAllQuestion = async (req, res, next) => {
     try {
-        const question = await Questions.findAll();
-        res.status(200).json({ message: 'All question found', question });
-    } catch (error) {
-        next(error);  // Passer l'erreur au middleware d'Express
-    }
-}
-
-exports.getQuestionByQuiz = async (req, res, next) => {
-    try {
+        // Récupérer l'id du quizz
         const { id } = req.params;
-        const question = await Questions.findAll({ where: { fk_id_quizzes: id } });
-        res.status(200).json({ message: 'Question found', question });
+        const questions = await Questions.findAll({
+            where: { fk_id_quizzes: id },
+            include: [{ model: Answers }]  // Inclure les réponses associées à chaque question
+        });
+        res.status(200).json({ message: 'All questions found', questions });
     } catch (error) {
         next(error);  // Passer l'erreur au middleware d'Express
     }

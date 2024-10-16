@@ -4,7 +4,6 @@ const questionsControllers = require('../controllers/questionsControllers');
 
 router.post('/createQuestion', questionsControllers.createQuestion);
 router.get('/getQuestion/:id', questionsControllers.getQuestion);
-router.get('/getAllQuestion', questionsControllers.getAllQuestion);
-router.get('/getQuestionByQuiz/:id', questionsControllers.getQuestionByQuiz);
+router.get('/getAllQuestions/:id', questionsControllers.getAllQuestion);
 
 module.exports = router;

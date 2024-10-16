@@ -5,6 +5,5 @@ const difficultyQuizControllers = require('../controllers/difficultyQuizControll
 router.post('/createDifficultyQuiz', difficultyQuizControllers.createDifficultyQuiz);
 router.get('/getDifficultyQuiz/:id', difficultyQuizControllers.getDifficultyQuiz);
 router.get('/getAllDifficultyQuiz', difficultyQuizControllers.getAllDifficultyQuiz);
-router.get('/getDifficultyQuizByQuestion/:id', difficultyQuizControllers.getDifficultyQuizByQuestion);
 
 module.exports = router;

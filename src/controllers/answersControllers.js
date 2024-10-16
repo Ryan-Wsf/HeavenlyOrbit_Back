@@ -31,13 +31,3 @@ exports.getAllAnswer = async (req, res, next) => {
         next(error);  // Passer l'erreur au middleware d'Express
     }
 }
-
-exports.getAnswerByQuestion = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        const answer = await Answers.findAll({ where: { fk_id_question: id } });
-        res.status(200).json({ message: 'Answer found', answer });
-    } catch (error) {
-        next(error);  // Passer l'erreur au middleware d'Express
-    }
-}

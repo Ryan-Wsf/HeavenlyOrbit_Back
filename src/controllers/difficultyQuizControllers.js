@@ -33,12 +33,3 @@ exports.getAllDifficultyQuiz = async (req, res, next) => {
     }
 }
 
-exports.getDifficultyQuizByQuestion = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        const difficultyQuiz = await DifficultyQuiz.findAll({ where: { fk_id_question: id } });
-        res.status(200).json({ message: 'Difficulty Quiz found', difficultyQuiz });
-    } catch (error) {
-        next(error);  // Passer l'erreur au middleware d'Express
-    }
-}

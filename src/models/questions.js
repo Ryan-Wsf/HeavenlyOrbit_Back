@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Answers = require('./Answers'); // Importez le modèle Answers
 
 const Questions = sequelize.define('Questions', {
     question: {
@@ -9,7 +10,6 @@ const Questions = sequelize.define('Questions', {
             notEmpty: true
         }
     },
-
     fk_id_quizzes: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -19,5 +19,9 @@ const Questions = sequelize.define('Questions', {
         }
     }
 });
+
+// Une question peut avoir plusieurs réponses
+Questions.hasMany(Answers, { foreignKey: 'fk_id_question' });
+Answers.belongsTo(Questions, { foreignKey: 'fk_id_question' });
 
 module.exports = Questions;

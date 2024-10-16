@@ -31,13 +31,3 @@ exports.getAllArticle = async (req, res, next) => {
         next(error);  // Passer l'erreur au middleware d'Express
     }
 }
-
-exports.getArticleByCategory = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        const article = await Articles.findAll({ where: { fk_id_category: id } });
-        res.status(200).json({ message: 'Article found', article });
-    } catch (error) {
-        next(error);  // Passer l'erreur au middleware d'Express
-    }
-}

@@ -32,12 +32,3 @@ exports.getAllCategory = async (req, res, next) => {
     }
 }
 
-exports.getCategoryByArticle = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        const category = await Categories.findAll({ where: { fk_id_category: id } });
-        res.status(200).json({ message: 'Category found', category });
-    } catch (error) {
-        next(error);  // Passer l'erreur au middleware d'Express
-    }
-}
