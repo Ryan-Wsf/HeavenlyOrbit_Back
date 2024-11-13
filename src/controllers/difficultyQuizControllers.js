@@ -1,4 +1,4 @@
-const DifficultyQuiz = require('../models');
+const { DifficultyQuiz } = require('../models');
 
 exports.createDifficultyQuiz = async (req, res, next) => {
     try {
@@ -8,7 +8,6 @@ exports.createDifficultyQuiz = async (req, res, next) => {
     } catch (error) {
         next(error);  // Passer l'erreur au middleware d'Express
     }
-    
 }
 
 exports.getDifficultyQuiz = async (req, res, next) => {

@@ -3,8 +3,8 @@ const Categories = require('./categories');
 const Articles = require('./articles');
 const DifficultyQuiz = require('./difficultyQuiz');
 const Quizzes = require('./quizzes');
-const Questions = require('./questions');
 const Answers = require('./answers');
+const Questions = require('./questions');
 
 module.exports = {
     User,
