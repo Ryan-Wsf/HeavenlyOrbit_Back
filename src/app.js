@@ -15,6 +15,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+(async () => {
+    try {
+      await sequelize.sync();
+      console.log('Connexion à PostgreSQL réussie !');
+    } catch (error) {
+      console.error('Impossible de se connecter à PostgreSQL :', error);
+    }
+})();
+
 app.use('/auth', authRoutes);
 app.use('/categories', categoriesRoutes);
 app.use('/articles', articlesRoutes);

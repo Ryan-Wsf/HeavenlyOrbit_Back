@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 require ('dotenv').config();
+const pg = require('pg');
 
 const sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -7,23 +8,8 @@ const sequelize = new Sequelize(
     process.env.DB_PASS, {
         host: process.env.DB_HOST,
         dialect: 'postgres',
-        dialectModule: require('pg'),
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false,
-            },
-        },
+        dialectModule: pg,
     }
 )
-
-(async () => {
-    try {
-      await sequelize.authenticate();
-      console.log('Connexion à PostgreSQL réussie !');
-    } catch (error) {
-      console.error('Impossible de se connecter à PostgreSQL :', error);
-    }
-})();
 
 module.exports = sequelize;
