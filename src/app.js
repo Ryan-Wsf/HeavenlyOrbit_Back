@@ -34,7 +34,7 @@ app.use('/answers', answersRoutes);
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 6543;
 
 sequelize.sync( { force: false, alter:false }).then(() => {
     app.listen(PORT, () => {
