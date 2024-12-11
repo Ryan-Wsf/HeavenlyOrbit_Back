@@ -1,6 +1,7 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
+const { sendMailForgotPassword } = require('../utils/sendMail');
 
 
 exports.register = async (req, res, next) => {
@@ -33,3 +34,18 @@ exports.login = async (req, res, next) => {
     }
 }
 
+
+exports.sendMail = async (req, res, next) => {
+    try {
+        const { email } = req.body;
+        const user = await User.findOne({ where: { email_user: email } });
+        if (!user) {
+            return res.status(401).json({ message: 'Invalid email or password' });
+        }
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '15m' });
+        await sendMailForgotPassword(email, token);
+        return res.status(200).json({ message: 'Email sent' });
+    } catch (error) {
+        next(error);  // Passer l'erreur au middleware d'Express
+    }
+}
